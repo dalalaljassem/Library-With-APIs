@@ -1,19 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import MemberStore from './Stores/memberStore'; 
-import MemberList from './Components/MemberList';
+import logo from "./logo.svg";
+import "./App.css";
+import MemberStore from "./Stores/memberStore";
+import MemberList from "./Components/MemberList";
 
 function App() {
   return (
     <div className="App">
-       <MemberList/>
-      
+      <MemberList />
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <p>DALAAAAL</p>
+        <p>shay</p>
         <a
           className="App-link"
           href="https://reactjs.org"
