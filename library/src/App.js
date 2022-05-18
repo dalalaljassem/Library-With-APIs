@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import MemberStore from "./Stores/memberStore";
+import memberStore from "./Stores/memberStore";
 import MemberList from "./Components/MemberList";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <p>DALAAAAL</p>
-        <p>shay</p>
+        <p>{memberStore.membersData}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
