@@ -4,7 +4,7 @@ function MemberItem({ member }) {
   return (
     <div>
       <p>{member.firstName}</p>
-      <p>{member.lastNAme}</p>
+      <p>{member.lastName}</p>
       <p>{member.membership}</p>
     </div>
   );
