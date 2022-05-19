@@ -6,11 +6,12 @@ function MemberList() {
   const memberList = memberStore.membersData.map((member) => (
     <MemberItem member={member} />
   ));
-  console.log(memberList);
+  // console.log(memberList);
 
   return (
     <div>
       <p>{memberList}</p>
+      {/* <button onClick={createMember}></button> */}
     </div>
   );
 }

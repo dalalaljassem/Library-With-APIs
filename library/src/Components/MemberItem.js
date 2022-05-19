@@ -1,9 +1,11 @@
-import memberStore from "../Stores/memberStore";
+import MemberDetailModal from "./MemberDetailModal";
 
 function MemberItem({ member }) {
+
   return (
     <div>
-      <div className="name">
+      <MemberDetailModal member={member}/>
+      <div className="name" >
      <p> Name : {member.firstName} {member.lastName}</p> 
      <p>Membership : {member.membership}</p>
       </div>

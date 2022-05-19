@@ -13,6 +13,29 @@
   }
 }
 
+.left {
+  float: left;
+  width: 30%;
+  margin: 100px;
+  background-color: rgb(250, 209, 255);
+}
+
+.right {
+  float: right;
+  width: 30%;
+  margin: 100px;
+  background-color: rgb(250, 209, 255);
+
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
