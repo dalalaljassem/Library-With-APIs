@@ -2,6 +2,8 @@ import "./App.css";
 // import memberStore from "./Stores/memberStore";
 import MemberList from "./Components/MemberList";
 import MemberCreateModal from "./Components/MemberCreateModal"
+import BookList from "./Components/BookList";
+import BookCreateModal from "./Components/BookCreateModal"
 
 function App() {
   return (
@@ -12,13 +14,14 @@ function App() {
     <br></br>
 <div class="container"> 
   <div class="row">
-  <div class="col left">  
+  <div class="col left"> 
   <MemberCreateModal/> 
    <MemberList />
   </div>
   <div class="col right" >
     <p>book</p>
-    {/* books */}
+  <BookCreateModal/>
+    <BookList/>
   </div>
 </div>
 </div> 
