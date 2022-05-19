@@ -2,11 +2,27 @@ import axios from "axios";
 import { makeAutoObservable, observable } from "mobx";
 
 class MemberStore {
+  //we took this from the postman get body
   membersData = [
-    // {name:"dalal",
-    //   age:23,
-    //   id:1,}
-  ];
+    {
+        "_id": "628514d5b8273a86534c95b8",
+        "firstName": "Aziz",
+        "lastName": "AlSaffar",
+        "membership": "gold",
+        "currentlyBorrowedBooks": [],
+        "slug": "aziz-alsaffar"
+    },
+    {
+        "_id": "6285150fb8273a86534c95bb",
+        "firstName": "Laila",
+        "lastName": "AlKandery",
+        "membership": "platinum",
+        "currentlyBorrowedBooks": [
+            "62851414b8273a86534c959d"
+        ],
+        "slug": "laila-alkandery"
+    }
+];
 
   constructor() {
     makeAutoObservable(this, {
@@ -26,7 +42,7 @@ class MemberStore {
     }
   };
 
-  createMumber = async (member) => {
+  createMember = async (member) => {
     try {
       const response = await axios.post(
         "https://library-borrow-system.herokuapp.com/api/members",

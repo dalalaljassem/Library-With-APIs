@@ -7,9 +7,9 @@ function MemberList() {
     <MemberItem member={member} />
   ));
   console.log(memberList);
+
   return (
     <div>
-      <p>pls work?</p>
       <p>{memberList}</p>
     </div>
   );
