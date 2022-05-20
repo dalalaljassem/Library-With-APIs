@@ -5,24 +5,22 @@ class MemberStore {
   //we took this from the postman get body
   membersData = [
     {
-        "_id": "628514d5b8273a86534c95b8",
-        "firstName": "Aziz",
-        "lastName": "AlSaffar",
-        "membership": "gold",
-        "currentlyBorrowedBooks": [],
-        "slug": "aziz-alsaffar"
+      _id: "628514d5b8273a86534c95b8",
+      firstName: "Aziz",
+      lastName: "AlSaffar",
+      membership: "gold",
+      currentlyBorrowedBooks: [],
+      slug: "aziz-alsaffar",
     },
     {
-        "_id": "6285150fb8273a86534c95bb",
-        "firstName": "Laila",
-        "lastName": "AlKandery",
-        "membership": "platinum",
-        "currentlyBorrowedBooks": [
-            "62851414b8273a86534c959d"
-        ],
-        "slug": "laila-alkandery"
-    }
-];
+      _id: "6285150fb8273a86534c95bb",
+      firstName: "Laila",
+      lastName: "AlKandery",
+      membership: "platinum",
+      currentlyBorrowedBooks: ["62851414b8273a86534c959d"],
+      slug: "laila-alkandery",
+    },
+  ];
 
   constructor() {
     makeAutoObservable(this);
@@ -40,19 +38,18 @@ class MemberStore {
     }
   };
 
-
   createMember = async (member) => {
     try {
       const response = await axios.post(
-        "https://library-borrow-system.herokuapp.com/api/members", member );
-        console.log(response.data)
-     this.membersData.push([...this.membersData, ...response.data]);
+        "https://library-borrow-system.herokuapp.com/api/members",
+        member
+      );
+      console.log(response.data);
+      this.membersData.push([...this.membersData, ...response.data]);
     } catch (error) {
       console.error(error);
     }
   };
-
-
 } //store end
 const memberStore = new MemberStore();
 memberStore.fetchMembers();

@@ -3,8 +3,7 @@ import { makeAutoObservable, observable } from "mobx";
 
 class BookStore {
   //we took this from the postman get body
-  booksData = [
-  ];
+  booksData = [];
   constructor() {
     makeAutoObservable(this);
   }
@@ -21,19 +20,18 @@ class BookStore {
     }
   };
 
-
-  createBook= async (book) => {
+  createBook = async (book) => {
     try {
       const response = await axios.post(
-        "https://library-borrow-system.herokuapp.com/api/books", book );
-        console.log(response.data)
-     this.booksData.push([...this.booksData, ...response.data]);
+        "https://library-borrow-system.herokuapp.com/api/books",
+        book
+      );
+      console.log(response.data);
+      this.booksData.push([...this.booksData, ...response.data]);
     } catch (error) {
       console.error(error);
     }
   };
-
-
 } //store end
 const bookStore = new BookStore();
 bookStore.fetchBooks();
