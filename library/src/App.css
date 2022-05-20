@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #A5AE9A;
 }
 
 .App-logo {
@@ -13,20 +14,62 @@
   }
 }
 
+h1{
+  margin-top: 100px;
+  padding: 60px;
+}
+
 .left {
   float: left;
-  width: 30%;
+  width: 35%;
   margin: 100px;
-  background-color: rgb(250, 209, 255);
+  padding: 20px 0px;
+  background-color: rgb(251, 251, 251);
+  border-radius: 30px;
+
 }
 
 .right {
   float: right;
-  width: 30%;
+  width: 35%;
   margin: 100px;
-  background-color: rgb(250, 209, 255);
+  padding: 20px 0px;
+  background-color: rgb(251, 251, 251);
+  border-radius: 30px;
+}
 
+.col-header{
+  padding: 20px;
+}
 
+.add-btn{
+  border-radius: 50%;
+  float: right;
+}
+
+.member-item{
+  display: flex;
+  margin-top: 10px;
+  padding-top: 7px;
+  background-color: #d2dac8;
+  border-radius: 10px;
+}
+
+.book-item{
+  display: flex;
+  margin-top: 10px;
+  padding-top: 7px;
+  background-color: #d2dac8;
+  border-radius: 10px;
+}
+
+.item-img{
+  margin: 20px;
+
+}
+
+.item-name{
+  float: left;
 }
 
 /* Clear floats after the columns */

@@ -4,70 +4,69 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import bookStore from "../Stores/bookStore";
 
-function  BookCreateModal(){
+function BookCreateModal() {
+  const [show, setShow] = useState(false);
 
-    const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const [newBook, setNewBook] = useState({
+    title: "",
+    author: "",
+    genres: ["Fantasy", ""],
+  });
 
-    const [newBook,setNewBook] = useState({
-        title :"",
-        author: "",
-        genres : ["Fantasy",""],
-    });
-
-
-    const handleChange = (event)=>{
-        setNewBook({...newBook, [event.target.name]: event.target.value})
-    }
+  const handleChange = (event) => {
+    setNewBook({ ...newBook, [event.target.name]: event.target.value });
+  };
 
   //   const handleGenreChange = (event)=>{
   //     setNewBook({...newBook})
   //     genres.push(genres.target.value)
   // }
 
-    const handleSubmit = (event)=>{
-        event.preventDefault();
-        bookStore.createBook(newBook);
-        handleClose();
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    bookStore.createBook(newBook);
+    handleClose();
+  };
 
-    return(  
-        <>
-    <Button variant="primary" onClick={handleShow}>
-        Create book
-      </Button>
-      
-     
+  return (
+    <>
+      <div className="add-btn">
+        <Button class="btn" variant="primary" onClick={handleShow}>
+          +
+        </Button>
+      </div>
+
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Book Creation</Modal.Title>
         </Modal.Header>
-        
+
         <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Title</Form.Label>
-    <Form.Control 
-    type="text" 
-    placeholder="Enter book title" 
-    name="title"
-    onChange={handleChange}
-    />
-  </Form.Group>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter book title"
+                name="title"
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Author</Form.Label>
-    <Form.Control 
-    type="text" 
-    placeholder="Enter author name" 
-    name="author"
-    onChange={handleChange}
-    />
-  </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Author</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter author name"
+                name="author"
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-  {/* <Form.Group className="mb-3">
+            {/* <Form.Group className="mb-3">
     <Form.Label>Genres</Form.Label>
     <Form.Select>
       <option>Action</option>
@@ -84,44 +83,41 @@ function  BookCreateModal(){
     </Form.Select>
   </Form.Group> */}
 
-  {['checkbox'].map((type) => (
-    <div key={`inline-${type}`} className="mb-3">
-      <Form.Check
-        inline
-        label="Fantasy"
-        name="genres"
-        type={type}
-        id={`inline-${type}-1`}
-       // checked={handleGenreChange()}
-        
-      />
-      <Form.Check
-        inline
-        label="Mystery"
-        name="genres"
-        type={type}
-        id={`inline-${type}-2`}
-        //onChange={handleGenreChange()}
-      />
-      <Form.Check
-        inline
-        label="Action"
-        name="genres"
-        type={type}
-        id={`inline-${type}-2`}
-        // onChange={handleGenreChange()}
-      />
-
-    </div>
-  ))}
-
-  </Form>
+            {["checkbox"].map((type) => (
+              <div key={`inline-${type}`} className="mb-3">
+                <Form.Check
+                  inline
+                  label="Fantasy"
+                  name="genres"
+                  type={type}
+                  id={`inline-${type}-1`}
+                  // checked={handleGenreChange()}
+                />
+                <Form.Check
+                  inline
+                  label="Mystery"
+                  name="genres"
+                  type={type}
+                  id={`inline-${type}-2`}
+                  //onChange={handleGenreChange()}
+                />
+                <Form.Check
+                  inline
+                  label="Action"
+                  name="genres"
+                  type={type}
+                  id={`inline-${type}-2`}
+                  // onChange={handleGenreChange()}
+                />
+              </div>
+            ))}
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSubmit} >
+          <Button variant="primary" onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -129,6 +125,5 @@ function  BookCreateModal(){
     </>
   );
 }
-
 
 export default BookCreateModal;
