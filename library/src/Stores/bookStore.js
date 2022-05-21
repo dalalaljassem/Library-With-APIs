@@ -1,5 +1,5 @@
 import axios from "axios";
-import { makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 class BookStore {
   //we took this from the postman get body
@@ -16,20 +16,21 @@ class BookStore {
       this.booksData = response.data;
       // console.log(response.data);
     } catch (error) {
-      console.error(error);
+      console.error("fetching error", error);
     }
   };
 
   createBook = async (book) => {
-    try {
-      const response = await axios.post(
-        "https://library-borrow-system.herokuapp.com/api/books",
-        book
-      );
-      console.log(response.data);
-      this.booksData.push([...this.booksData, ...response.data]);
+   // this.booksData.push(book);
+   try {
+    const response = await axios.post(
+      "https://library-borrow-system.herokuapp.com/api/books",
+      book
+    );
+    console.log(response.data);
+    this.booksData.push([...this.booksData, ...response.data]);
     } catch (error) {
-      console.error(error);
+      console.error("creating error", error);
     }
   };
 } //store end

@@ -6,27 +6,37 @@ import bookStore from "../Stores/bookStore";
 
 function BookCreateModal() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [genre, setGenre] = useState([]);
 
   const [newBook, setNewBook] = useState({
-    title: "",
+    _id: "",
     author: "",
-    genres: ["Fantasy"],
+    title: "",
+    genres: [],
+    available: true,
+    borrowedBy: [],
+    slug: "",
+    image: "",
   });
 
+  
   const handleChange = (event) => {
     setNewBook({ ...newBook, [event.target.name]: event.target.value });
   };
 
-  //   const handleGenreChange = (event)=>{
-  //     setNewBook({...newBook})
-  //     genres.push(genres.target.value)
-  // }
+    const handleGenreChange = (event)=>{
+      if (genre.indexOf(event.target.value) == -1) {
+        genre.push(event.target.value);}else{
+          genre.splice(genre.indexOf(event.target.value), 1);
+        }
+      
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    newBook.genres=genre;
     bookStore.createBook(newBook);
     handleClose();
   };
@@ -67,10 +77,19 @@ function BookCreateModal() {
             </Form.Group>
 
             <Form.Group className="mb-3">
+              <Form.Control
+                type="text"
+                name="image"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            
+
+            <Form.Group className="mb-3">
               <Form.Label>Genres</Form.Label>
               <Form.Select
                 name="genres"
-                onChange={(e) => handleChange}
+                onChange={(e) => handleGenreChange}
                 class="form-select"
                 aria-label="Default select example"
               >
@@ -110,34 +129,6 @@ function BookCreateModal() {
               </Form.Select>
             </Form.Group>
 
-            {/* {["checkbox"].map((type) => (
-              <div key={`inline-${type}`} className="mb-3">
-                <Form.Check
-                  inline
-                  label="Fantasy"
-                  name="genres"
-                  type={type}
-                  id={`inline-${type}-1`}
-                  // checked={handleGenreChange()}
-                />
-                <Form.Check
-                  inline
-                  label="Mystery"
-                  name="genres"
-                  type={type}
-                  id={`inline-${type}-2`}
-                  //onChange={handleGenreChange()}
-                />
-                <Form.Check
-                  inline
-                  label="Action"
-                  name="genres"
-                  type={type}
-                  id={`inline-${type}-2`}
-                  // onChange={handleGenreChange()}
-                />
-              </div>
-            ))} */}
           </Form>
         </Modal.Body>
         <Modal.Footer>

@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import memberStore from "../Stores/memberStore";
 import MemberItem from "./MemberItem";
+import bookStore from "../Stores/bookStore";
 
 function MemberDetailModal({ member }) {
   const [show, setShow] = useState(false);
@@ -14,7 +15,20 @@ function MemberDetailModal({ member }) {
     firstName: "",
     lastName: "",
     Membership: "",
+    _id:"",
+    currentlyBorrowedBooks:[],
   });
+
+//   const borrowedBooks = () => {
+//     let arr=[];
+//     let book = bookStore.book;
+//     let books = member.currentlyBorrowedBooks;
+//     const r = books.filter(book=>{
+//      if (borrowedBooks===book._id  ) 
+//     arr.push[book._id]})
+// //    console.log("🚀 ~ file: MemberDetailModal.js ~ line 29 ~ constborrowedBooks ~ r", r);
+//   }}
+  
 
   return (
     <>

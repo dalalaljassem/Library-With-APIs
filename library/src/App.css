@@ -18,8 +18,15 @@ h1{
   margin-top: 100px;
   padding: 60px;
   font-family: 'Righteous', cursive;
+  padding-top: 350px;
+  color: white;
 }
 
+.headerbg{
+  background-image: url('https://farm9.staticflickr.com/8158/7678283830_81074fb69f_o.gif');
+  background-size: cover;
+  height:800px;
+}
 .left {
   float: left;
   width: 35%;

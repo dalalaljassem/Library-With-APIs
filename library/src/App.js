@@ -9,10 +9,14 @@ import { useState } from "react";
 function App() {
   const [query, setQuery] = useState("");
   const [genre, setGenre] = useState("");
+
   return (
     // big div
     <div className="App">
+      <div className="headerbg">
       <h1>Library System</h1>
+      </div>
+
       <br></br>
       <div class="container">
         <div class="row">
