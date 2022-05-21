@@ -13,7 +13,7 @@ function BookCreateModal() {
   const [newBook, setNewBook] = useState({
     title: "",
     author: "",
-    genres: ["Fantasy", ""],
+    genres: ["Fantasy"],
   });
 
   const handleChange = (event) => {
@@ -39,7 +39,7 @@ function BookCreateModal() {
         </Button>
       </div>
 
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onSubmit={handleSubmit} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Book Creation</Modal.Title>
         </Modal.Header>
@@ -66,24 +66,51 @@ function BookCreateModal() {
               />
             </Form.Group>
 
-            {/* <Form.Group className="mb-3">
-    <Form.Label>Genres</Form.Label>
-    <Form.Select>
-      <option>Action</option>
-      <option>Sci-Fi</option>
-      <option>Romance</option>
-      <option>Fiction</option>
-      <option>Self-Help</option>
-      <option>Thriller</option>
-      <option>Suspense</option>
-      <option>Biography</option>
-      <option>Business</option>
-      <option>Entrepreneurship</option>
-      <option>Crime</option>
-    </Form.Select>
-  </Form.Group> */}
+            <Form.Group className="mb-3">
+              <Form.Label>Genres</Form.Label>
+              <Form.Select
+                name="genres"
+                onChange={(e) => handleChange}
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option name="genres" value="Action">
+                  Action
+                </option>
+                <option name="genres" value="Sci-Fi">
+                  Sci-Fi
+                </option>
+                <option name="genres" value="Romance">
+                  Romance
+                </option>
+                <option name="genres" value="Fiction">
+                  Fiction
+                </option>
+                <option name="genres" value="Self-Help">
+                  Self-Help
+                </option>
+                <option name="genres" value="Thriller">
+                  Thriller
+                </option>
+                <option name="genres" value="Suspense">
+                  Suspense
+                </option>
+                <option name="genres" value="Biography">
+                  Biography
+                </option>
+                <option name="genres" value="Business">
+                  Business
+                </option>
+                <option name="genres" value="Entrepreneurship">
+                  Entrepreneurship
+                </option>
+                <option name="genres" value="Crime">
+                  Crime
+                </option>
+              </Form.Select>
+            </Form.Group>
 
-            {["checkbox"].map((type) => (
+            {/* {["checkbox"].map((type) => (
               <div key={`inline-${type}`} className="mb-3">
                 <Form.Check
                   inline
@@ -110,7 +137,7 @@ function BookCreateModal() {
                   // onChange={handleGenreChange()}
                 />
               </div>
-            ))}
+            ))} */}
           </Form>
         </Modal.Body>
         <Modal.Footer>

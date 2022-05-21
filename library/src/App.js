@@ -35,7 +35,7 @@ function App() {
                 class="form-control rounded"
                 placeholder="Search"
                 aria-label="Search"
-                // aria-describedby="search-addon"
+                aria-describedby="search-addon"
                 onChange={(e) => setQuery(e.target.value)}
               />
             </div>
@@ -45,7 +45,7 @@ function App() {
                 aria-label="Default select example"
                 onChange={(e) => setGenre(e.target.value)}
               >
-                <option value="" selected>
+                <option value="All" defaultValue="All">
                   All
                 </option>
                 <option value="Fantasy">Fantasy</option>
