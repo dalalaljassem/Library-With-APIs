@@ -5,9 +5,11 @@ import { useState } from "react";
 import memberStore from "../Stores/memberStore";
 import MemberItem from "./MemberItem";
 import bookStore from "../Stores/bookStore";
+import { useEffect } from "react";
 
 function MemberDetailModal({ member }) {
   const [show, setShow] = useState(false);
+  const [borrowedB, setBorrowedB] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -15,20 +17,18 @@ function MemberDetailModal({ member }) {
     firstName: "",
     lastName: "",
     Membership: "",
-    _id:"",
-    currentlyBorrowedBooks:[],
+    _id: "",
+    currentlyBorrowedBooks: [],
   });
 
-//   const borrowedBooks = () => {
-//     let arr=[];
-//     let book = bookStore.book;
-//     let books = member.currentlyBorrowedBooks;
-//     const r = books.filter(book=>{
-//      if (borrowedBooks===book._id  ) 
-//     arr.push[book._id]})
-// //    console.log("🚀 ~ file: MemberDetailModal.js ~ line 29 ~ constborrowedBooks ~ r", r);
-//   }}
-  
+  const borrowedBooks = () => {
+    let Bbooks = member.currentlyBorrowedBooks;
+    const r = bookStore.booksData.filter((book) => Bbooks.includes(book._id));
+    setBorrowedB(r.map((book) => (book = book.title)));
+    //    console.log("🚀 ~ file: MemberDetailModal.js ~ line 29 ~ constborrowedBooks ~ r", r);
+  };
+
+  useEffect(() => borrowedBooks, []);
 
   return (
     <>
@@ -44,7 +44,7 @@ function MemberDetailModal({ member }) {
           <p>First Name: {member.firstName}</p>
           <p>Last Name: {member.lastName}</p>
           <p>Membership Type: {member.membership}</p>
-          <p>Books Borrowed: stay tuned..</p>
+          <p>Books Borrowed: {borrowedB}</p>
         </Modal.Body>
       </Modal>
     </>

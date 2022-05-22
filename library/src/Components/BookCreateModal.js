@@ -11,33 +11,34 @@ function BookCreateModal() {
   const [genre, setGenre] = useState([]);
 
   const [newBook, setNewBook] = useState({
-    _id: "",
+    // _id: "",
     author: "",
     title: "",
     genres: [],
     available: true,
     borrowedBy: [],
-    slug: "",
-    image: "",
+    // slug: "",
+    // image: "",
   });
 
-  
   const handleChange = (event) => {
     setNewBook({ ...newBook, [event.target.name]: event.target.value });
   };
 
-    const handleGenreChange = (event)=>{
-      if (genre.indexOf(event.target.value) == -1) {
-        genre.push(event.target.value);}else{
-          genre.splice(genre.indexOf(event.target.value), 1);
-        }
-      
-  }
+  const handleGenreChange = (event) => {
+    if (genre.indexOf(event.target.value) == -1) {
+      genre.push(event.target.value);
+    } else {
+      genre.splice(genre.indexOf(event.target.value), 1);
+    }
+  };
 
   const handleSubmit = (event) => {
+    console.log("before creation");
     event.preventDefault();
-    newBook.genres=genre;
+    newBook.genres = genre;
     bookStore.createBook(newBook);
+
     handleClose();
   };
 
@@ -77,13 +78,8 @@ function BookCreateModal() {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Control
-                type="text"
-                name="image"
-                onChange={handleChange}
-              />
+              <Form.Control type="text" name="image" onChange={handleChange} />
             </Form.Group>
-            
 
             <Form.Group className="mb-3">
               <Form.Label>Genres</Form.Label>
@@ -128,7 +124,6 @@ function BookCreateModal() {
                 </option>
               </Form.Select>
             </Form.Group>
-
           </Form>
         </Modal.Body>
         <Modal.Footer>

@@ -24,7 +24,7 @@ function BookDetailModal({ book }) {
           <p>Book Title: {book.title}</p>
           <p>Author: {book.author}</p>
           <p>Genres: {book.genres}</p>
-          <img src={book.image} style={{ width: "150px", height: "200px"}}/>
+          <img src={book.image} style={{ width: "150px", height: "200px" }} />
         </Modal.Body>
       </Modal>
     </>

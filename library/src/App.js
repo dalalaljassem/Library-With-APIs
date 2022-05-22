@@ -7,14 +7,11 @@ import BookCreateModal from "./Components/BookCreateModal";
 import { useState } from "react";
 
 function App() {
-  const [query, setQuery] = useState("");
-  const [genre, setGenre] = useState("");
-
   return (
     // big div
     <div className="App">
       <div className="headerbg">
-      <h1>Library System</h1>
+        <h1>Library System</h1>
       </div>
 
       <br></br>
@@ -33,41 +30,7 @@ function App() {
               <h3>Books</h3>
             </div>
 
-            <div class="input-group rounded">
-              <input
-                type="search"
-                class="form-control rounded"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="search-addon"
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </div>
-            <div className="filter-div">
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                onChange={(e) => setGenre(e.target.value)}
-              >
-                <option value="All" defaultValue="All">
-                  All
-                </option>
-                <option value="Fantasy">Fantasy</option>
-                <option value="Mystery">Mystery</option>
-                <option value="Action">Action</option>
-                <option value="Sci-fi">Sci-Fi</option>
-                <option value="Romance">Romance</option>
-                <option value="Fiction">Fiction</option>
-                <option value="Self-Help">Self-Help</option>
-                <option value="Thriller">Thriller</option>
-                <option value="Suspense">Suspense</option>
-                <option value="Biography">Biography</option>
-                <option value="Buisness">Business</option>
-                <option value="Entrepreneurship">Entrepreneurship</option>
-                <option value="Crime">Crime</option>
-              </select>
-            </div>
-            <BookList query={query} genre={genre} />
+            <BookList />
           </div>
         </div>
       </div>

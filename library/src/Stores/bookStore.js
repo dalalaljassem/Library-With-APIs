@@ -21,14 +21,14 @@ class BookStore {
   };
 
   createBook = async (book) => {
-   // this.booksData.push(book);
-   try {
-    const response = await axios.post(
-      "https://library-borrow-system.herokuapp.com/api/books",
-      book
-    );
-    console.log(response.data);
-    this.booksData.push([...this.booksData, ...response.data]);
+    // this.booksData.push(book);
+    try {
+      const response = await axios.post(
+        "https://library-borrow-system.herokuapp.com/api/books",
+        book
+      );
+      console.log(response.data);
+      this.booksData.push(response.data);
     } catch (error) {
       console.error("creating error", error);
     }

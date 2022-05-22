@@ -20,6 +20,7 @@ h1{
   font-family: 'Righteous', cursive;
   padding-top: 350px;
   color: white;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .headerbg{

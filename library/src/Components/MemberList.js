@@ -10,7 +10,7 @@ function MemberList() {
 
   return (
     <div>
-      <p>{memberList}</p>
+      {memberList}
       {/* <button onClick={createMember}></button> */}
     </div>
   );
