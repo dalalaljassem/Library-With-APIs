@@ -29,7 +29,7 @@ function MemberCreateModal() {
   return (
     <>
       <div className="add-btn">
-        <Button class="btn" variant="primary" onClick={handleShow}>
+        <Button class="btn" variant="secondary" onClick={handleShow}>
           +
         </Button>
       </div>

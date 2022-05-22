@@ -85,6 +85,18 @@ h1{
   float: left;
 }
 
+.book-modal{
+  display: flex;
+}
+
+.book-img{
+  margin: 10px;
+}
+
+.book-detail{
+  margin: 10px 0px;
+}
+
 /* Clear floats after the columns */
 .row:after {
   content: "";

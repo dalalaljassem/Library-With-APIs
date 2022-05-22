@@ -32,7 +32,7 @@ function MemberDetailModal({ member }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="secondary" onClick={handleShow}>
         i
       </Button>
 

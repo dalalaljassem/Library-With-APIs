@@ -1,5 +1,5 @@
 import axios from "axios";
-import { makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import bookStore from "../Stores/bookStore";
 
 class MemberStore {
@@ -22,7 +22,6 @@ class MemberStore {
       slug: "laila-alkandery",
     },
   ];
-
 
   constructor() {
     makeAutoObservable(this);
@@ -51,6 +50,12 @@ class MemberStore {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  memberNameFind = (memberId) => {
+    const member = this.membersData.find((member) => member._id === memberId);
+    const fullName = member.firstName + " " + member.lastName;
+    return fullName;
   };
 } //store end
 const memberStore = new MemberStore();
