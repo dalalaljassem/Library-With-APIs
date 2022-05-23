@@ -1,4 +1,5 @@
 import MemberDetailModal from "./MemberDetailModal";
+import React from "react";
 
 function MemberItem({ member }) {
   return (

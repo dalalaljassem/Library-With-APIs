@@ -3,6 +3,7 @@ import Select from "react-select";
 import bookStore from "../Stores/bookStore";
 import BookItem from "./BookItem";
 
+
 const options = [
   { value: "Fantasy", label: "Fantasy" },
   { value: "Mystery", label: "Mystery" },
@@ -38,6 +39,7 @@ const Genre = () => {
       selected.splice(selected.indexOf(event.target.value), 1);
     }
   };
+  
   return (
     <div>
       {bookList}

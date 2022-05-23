@@ -58,6 +58,7 @@ class MemberStore {
     return fullName;
   };
 } //store end
+
 const memberStore = new MemberStore();
 memberStore.fetchMembers();
 export default memberStore;

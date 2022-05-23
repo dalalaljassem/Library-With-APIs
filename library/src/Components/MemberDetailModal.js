@@ -5,7 +5,7 @@ import { useState } from "react";
 import memberStore from "../Stores/memberStore";
 import MemberItem from "./MemberItem";
 import bookStore from "../Stores/bookStore";
-import { useEffect } from "react";
+import React,{ useEffect } from "react";
 
 function MemberDetailModal({ member }) {
   const [show, setShow] = useState(false);

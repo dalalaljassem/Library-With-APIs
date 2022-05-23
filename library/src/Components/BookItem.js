@@ -1,4 +1,5 @@
 import BookDetailModal from "./BookDetailModal";
+import React from "react";
 
 function BookItem({ book }) {
   return (
