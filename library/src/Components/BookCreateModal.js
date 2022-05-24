@@ -76,7 +76,13 @@ function BookCreateModal() {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Control type="text" name="image" onChange={handleChange} />
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter image link"
+                name="image"
+                onChange={handleChange}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3">
