@@ -36,24 +36,51 @@ class BookStore {
     }
   };
 
-  borrowBook = (memberId,borrowedBook) => {
+  borrowBook = async (borrowedBook, member) => {
     try {
-      const book = this.booksData.find((book) => book._id === borrowedBook._id);
-      book.borrowedBy.push(memberId);
-      axios.put(
-        `https://library-borrow-system.herokuapp.com/api/books/${book._id}/borrow/${memberId}`
-        );
-        
+      switch (member.membership) {
+        case "silver":
+          if (member.currentlyBorrowedBooks.length > 1) {
+            alert("You reached your limit");
+            return;
+          }
+          break;
+        case "gold":
+          if (member.currentlyBorrowedBooks.length > 2) {
+            alert("You reached your limit");
+            return;
+          }
+          break;
+        case "platinum":
+          if (member.currentlyBorrowedBooks.length > 4) {
+            alert("You reached your limit");
+            return;
+          }
+          break;
+      }
+      member.currentlyBorrowedBooks.push(borrowedBook._id);
+      borrowedBook.borrowedBy.push(member._id);
+      borrowedBook["available"] = false;
+      const response = await axios.put(
+        `https://library-borrow-system.herokuapp.com/api/books/${borrowedBook._id}/borrow/${member._id}`
+      );
+      memberStore.fetchMembers();
     } catch (error) {
       console.error("borrowing error", error);
     }
   };
 
   returnBook = async (returnedBook, member) => {
-    const book = this.booksData.find((book) => book._id === returnedBook._id);
     try {
+      // const book = this.booksData.find((book) => book._id === returnedBook._id);
+      returnedBook["available"] = true;
+      member.currentlyBorrowedBooks?.splice(
+        member.currentlyBorrowedBooks?.indexOf(returnedBook._id),
+        1
+      );
+
       const response = await axios.put(
-        `https://library-borrow-system.herokuapp.com/api/books/${book._id}/return/${member._d}`
+        `https://library-borrow-system.herokuapp.com/api/books/${returnedBook._id}/return/${member._id}`
       );
     } catch (error) {
       console.error("returning error", error);

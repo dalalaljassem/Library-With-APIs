@@ -39,6 +39,11 @@ class MemberStore {
     }
   };
 
+  findMember = (memberId) => {
+    const member = this.membersData?.find((member) => memberId === member?._id);
+    return member;
+  };
+
   createMember = async (member) => {
     try {
       const response = await axios.post(

@@ -8,13 +8,13 @@ import Genre from "./Genre";
 
 function BookList() {
   const [query, setQuery] = useState("");
-  const [genre, setGenre] = useState([]);
+  const [genre, setGenre] = useState("");
 
   const bookList = bookStore.booksData
     .filter(
       (book) =>
         book.title.toLowerCase().includes(query.toLowerCase()) &&
-        book.genres.includes(genre)
+        (book.genres.find((gen) => gen === genre) || genre === "")
     )
     .map((book) => <BookItem book={book} key={book._id} />);
 

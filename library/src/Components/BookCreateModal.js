@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import bookStore from "../Stores/bookStore";
 import React from "react";
-
+import { set } from "mobx";
 
 function BookCreateModal() {
   const [show, setShow] = useState(false);
@@ -13,26 +13,22 @@ function BookCreateModal() {
   const [genre, setGenre] = useState([]);
 
   const [newBook, setNewBook] = useState({
-    // _id: "",
     author: "",
     title: "",
     genres: [],
     available: true,
     borrowedBy: [],
-    // slug: "",
-    // image: "",
   });
 
   const handleChange = (event) => {
-    setNewBook({ ...newBook, [event.target.name]: event.target.value });
+    setNewBook({
+      ...newBook,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleGenreChange = (event) => {
-    if (genre.indexOf(event.target.value) == -1) {
-      genre.push(event.target.value);
-    } else {
-      genre.splice(genre.indexOf(event.target.value), 1);
-    }
+    setGenre([...genre, event.target.value]);
   };
 
   const handleSubmit = (event) => {
@@ -87,9 +83,10 @@ function BookCreateModal() {
               <Form.Label>Genres</Form.Label>
               <Form.Select
                 name="genres"
-                onChange={(e) => handleGenreChange}
+                onChange={handleGenreChange}
                 class="form-select"
-                aria-label="Default select example"
+                aria-label="Default select example multiple"
+                multiple
               >
                 <option name="genres" value="Action">
                   Action

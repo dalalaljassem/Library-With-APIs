@@ -5,7 +5,7 @@ import { useState } from "react";
 import memberStore from "../Stores/memberStore";
 import MemberItem from "./MemberItem";
 import bookStore from "../Stores/bookStore";
-import React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 
 function MemberDetailModal({ member }) {
   const [show, setShow] = useState(false);
@@ -28,11 +28,11 @@ function MemberDetailModal({ member }) {
     //    console.log("🚀 ~ file: MemberDetailModal.js ~ line 29 ~ constborrowedBooks ~ r", r);
   };
 
-  useEffect(() => borrowedBooks, []);
+  useEffect(() => borrowedBooks);
 
   return (
     <>
-      <Button variant="secondary" onClick={handleShow}>
+      <Button variant="dark" onClick={handleShow}>
         i
       </Button>
 

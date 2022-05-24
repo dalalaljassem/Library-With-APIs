@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import memberStore from "../Stores/memberStore";
 
 function MemberCreateModal() {
@@ -29,7 +29,7 @@ function MemberCreateModal() {
   return (
     <>
       <div className="add-btn">
-        <Button class="btn" variant="secondary" onClick={handleShow}>
+        <Button class="btn" variant="dark" onClick={handleShow}>
           +
         </Button>
       </div>

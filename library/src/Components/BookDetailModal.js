@@ -1,68 +1,47 @@
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import bookStore from "../Stores/bookStore";
 import memberStore from "../Stores/memberStore";
 import BookItem from "./BookItem";
+import { observer } from "mobx-react-lite";
 
 function BookDetailModal({ book }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [membersB, setMembersB] = useState([]);
-  const [mem, setMem] = useState([]); 
-  const [newBMember, setnewBMember] = useState({});
-  const [available, setAvailable] = useState(true);
-
-  let membersPick = {};
-
-  const BorrowingMembers = () => {
-    // const memArr = memberStore.membersData
-    //   .filter((member) => book.borrowedBy.includes(member._id))
-    //   .map((member) => (member = member.firstName + member.lastName));
-    // console.log(memArr);
-
-    const memArr = book.borrowedBy.map((id) => memberStore.memberNameFind(id));
-
-    setMembersB(memArr);
-  };
-
+  const [mem, setMem] = useState([]);
+  const [newBMember, setnewBMember] = useState("");
+  const [available, setAvailable] = useState(book.available);
 
   const borrowingMembers = () => {
     let membersB = book.borrowedBy;
-    const r = memberStore.membersData.filter((member) => membersB.includes(member._id));
-    setMem(r.map((member) => (member = member.firstName + " " + member.lastName  + " , " )));
+    const r = memberStore.membersData.filter((member) =>
+      membersB.includes(member._id)
+    );
+    setMem(
+      r.map(
+        (member) => (member = member.firstName + " " + member.lastName + " , ")
+      )
+    );
   };
 
   useEffect(() => borrowingMembers);
 
-
   const handleBorrow = () => {
-    if (book.available) {
-      bookStore.borrowBook(book,newBMember);
-
-    }
-    // console.log("🚀 ~ file: BookDetailModal.js ~ line 45 ~ handleBorrow ~ book", book)
-    // console.log("🚀 ~ file: BookDetailModal.js ~ line 44 ~ handleBorrow ~ newBMember", newBMember)
+    const memToBorrow = memberStore.findMember(newBMember);
+    console.log(newBMember);
+    bookStore.borrowBook(book, memToBorrow);
   };
-
-  // const handleMember = (event) =>{
-  //   memberStore.members.map((element) => {
-  //     if (element.firstName + " " + element.lastName == membersB) {
-  //       membersPick = element;
-  //       {handleBorrow()}
-  //     } 
-  // }
-  //   )};
-    
 
   const handleReturn = () => {
-    book.available = true;
-    bookStore.returnBook(book);
+    const lastMem = memberStore.findMember(
+      book.borrowedBy[book.borrowedBy?.length - 1]
+    );
+    bookStore.returnBook(book, lastMem);
   };
-
 
   return (
     <div>
@@ -87,36 +66,32 @@ function BookDetailModal({ book }) {
               <p>Book Title: {book.title}</p>
               <p>Author: {book.author}</p>
               <p>Genres: {book.genres}</p>
-              <p>Availablity: {book.available}</p>
+              <p>Status: {available ? "Available" : "Not Available"}</p>
               <p>Borrowed By:{mem}</p>
-
             </div>
           </div>
 
           <div class="d-grid gap-2 mx-auto">
-          <select  class="form-select"
+            <select
+              class="form-select"
               aria-label="Default select example"
-              onChange={(e)=>{setnewBMember(e.target.key)}}>
-                
-              {memberStore.membersData.map((member) => (
-              <option key={member._id}>{(member = member.firstName + " " + member.lastName  )}</option>
-                 ))}
-              </select>
-            <button
-              class="btn btn-secondary"
-              type="button"
-              onClick={handleBorrow}
+              onChange={(event) => {
+                setnewBMember(event.target.value);
+              }}
             >
+              {memberStore.membersData.map((member) => (
+                <option value={member._id}>
+                  {(member = member.firstName + " " + member.lastName)}
+                </option>
+              ))}
+            </select>
+            <button class="btn btn-dark" type="button" onClick={handleBorrow}>
               Borrow
             </button>
 
-            <button 
-            class="btn btn-secondary" 
-            type="button"
-            onClick={handleReturn}>
+            <button class="btn btn-dark" type="button" onClick={handleReturn}>
               Return
             </button>
-
           </div>
         </Modal.Body>
       </Modal>
@@ -124,4 +99,4 @@ function BookDetailModal({ book }) {
   );
 }
 
-export default BookDetailModal;
+export default observer(BookDetailModal);
