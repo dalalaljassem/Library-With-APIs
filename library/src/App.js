@@ -21,7 +21,7 @@ function App() {
         <Tab.Container id="top-tabs-example" defaultActiveKey="first">
           <Row>
             <Row sm={3} class="tabBar justify-content-center">
-              <Nav variant="pills" className="flex-column">
+              <Nav variant="pills" className="flex-column tabBar">
                 <Nav.Item>
                   <Nav.Link eventKey="first">Members</Nav.Link>
                 </Nav.Item>
