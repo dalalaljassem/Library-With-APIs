@@ -1,11 +1,12 @@
 import "./App.css";
-// import memberStore from "./Stores/memberStore";
-import MemberList from "./Components/MemberList";
-import MemberCreateModal from "./Components/MemberCreateModal";
-import BookList from "./Components/BookList";
-import BookCreateModal from "./Components/BookCreateModal";
-import { useState } from "react";
+import Members from "./Components/Members";
+import Books from "./Components/Books";
 import React from "react";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
+import Nav from "react-bootstrap/Nav";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 function App() {
   return (
@@ -17,23 +18,30 @@ function App() {
 
       <br></br>
       <div class="container">
-        <div class="row">
-          <div class="col left shadow-lg p-3 mb-5 bg-body rounded-3">
-            <div className="col-header">
-              <MemberCreateModal />
-              <h3>Members</h3>
-            </div>
-            <MemberList />
-          </div>
-          <div class="col right shadow-lg p-3 mb-5 bg-body rounded-3">
-            <div className="col-header">
-              <BookCreateModal />
-              <h3>Books</h3>
-            </div>
-
-            <BookList />
-          </div>
-        </div>
+        <Tab.Container id="top-tabs-example" defaultActiveKey="first">
+          <Row>
+            <Row sm={3} class="tabBar justify-content-center">
+              <Nav variant="pills" className="flex-column">
+                <Nav.Item>
+                  <Nav.Link eventKey="first">Members</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="second">Books</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Row>
+            <Row sm={9}>
+              <Tab.Content>
+                <Tab.Pane eventKey="first">
+                  <Members />
+                </Tab.Pane>
+                <Tab.Pane eventKey="second">
+                  <Books />
+                </Tab.Pane>
+              </Tab.Content>
+            </Row>
+          </Row>
+        </Tab.Container>
       </div>
     </div>
   );

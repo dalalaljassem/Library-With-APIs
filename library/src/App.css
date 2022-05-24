@@ -1,6 +1,8 @@
 .App {
   text-align: center;
-  background-color: #A5AE9A;
+  background-color: #182324;
+  font-family: 'Smooch Sans', sans-serif;
+  font-family: 'Tajawal', sans-serif;
 }
 
 .App-logo {
@@ -23,14 +25,21 @@ h1{
   text-shadow: 2px 2px 4px #000000;
 }
 
+.tabBar{
+  /* background-color: aliceblue; */
+  text-align: center;
+  /* position: relative;
+  left: 50%;
+  transform: translateX(-50%);   */
+}
 .headerbg{
   background-image: url('https://farm9.staticflickr.com/8158/7678283830_81074fb69f_o.gif');
   background-size: cover;
   height:800px;
 }
 .left {
-  float: left;
-  width: 35%;
+  
+  width: 85%;
   margin: 100px;
   padding: 20px 0px;
   background-color: rgb(251, 251, 251);
@@ -39,8 +48,8 @@ h1{
 }
 
 .right {
-  float: right;
-  width: 35%;
+  /* float: right; */
+  width: 85%;
   margin: 100px;
   padding: 20px 0px;
   background-color: rgb(251, 251, 251);
@@ -77,12 +86,21 @@ h1{
 }
 
 .item-img{
+  width: 60px;
+  height: 80px;
   margin: 20px;
 
 }
 
 .item-name{
   float: left;
+  text-align: start;
+  padding: 20px 200px;
+  margin-right: 200px;
+}
+.item-i{
+  float: right;
+  margin: 30px;
 }
 
 .book-modal{
